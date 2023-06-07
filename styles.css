@@ -86,7 +86,7 @@
 
   .draggable {
     display: inline-block;
-    margin: 10px;
+    margin: 30px;
   }
   
 
@@ -120,4 +120,23 @@
     background-color: #555;
   }
   
+  #shapes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .centered-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .centered-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   

@@ -1,17 +1,8 @@
 const draggableElements = document.querySelectorAll(".draggable");
 const dropZone = document.getElementById("drop-zone");
 const evaluationArea = document.getElementById("evaluation-area");
+const shapesContainer = document.getElementById("shapes-container");
 
-const colors = [
-  "black",
-  "red",
-  "green",
-  "blue",
-  "yellow",
-  "orange",
-  "purple",
-  "pink",
-];
 let randomShapes = [];
 
 draggableElements.forEach((element, index) => {
@@ -92,7 +83,6 @@ function evaluateShape(shape) {
 
     const newShape =
       randomShapes[Math.floor(Math.random() * randomShapes.length)];
-    console.log(newShape);
     evaluationArea.setAttribute("class", `evaluation-area ${newShape}`);
   }
 
@@ -102,7 +92,7 @@ function evaluateShape(shape) {
 
   function showRestartButton() {
     const restartButton = document.getElementById("restart-button");
-    restartButton.style.display = "block";
+    restartButton.style.display = "flex";
   }
 }
 
@@ -113,8 +103,21 @@ function restartProcess() {
   restartButton.style.display = "none";
 }
 
-function generateShapeHTML(shape) {
-  return `<div class="draggable ${shape}" id=""></div>`;
+function getRandomColor() {
+  const colors = [
+    "#FF0000",
+    "#00FF00",
+    "#0000FF",
+    "#FFFF00",
+    "#FF00FF",
+    "#00FFFF",
+    "#FFA500",
+    "#800080",
+    "#008000",
+    "#000080",
+  ];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }
 
 function generateShapes() {
@@ -129,6 +132,9 @@ function generateShapes() {
     "heart",
     "diamond",
   ];
+
+  shapesContainer.innerHTML = "";
+
   for (let i = 0; i < availableShapes.length; i++) {
     const randomIndex = Math.floor(Math.random() * availableShapes.length);
     const shape = availableShapes[randomIndex];
@@ -136,11 +142,11 @@ function generateShapes() {
     availableShapes.splice(randomIndex, 1);
 
     const shapeElement = document.createElement("div");
-    shapeElement.classList.add("draggable", shape);
-    shapeElement.style.backgroundColor =
-      colors[Math.floor(Math.random() * colors.length)];
+    shapeElement.classList.add("draggable", "shape", shape);
+    shapeElement.style.backgroundColor = getRandomColor();
     shapeElement.id = shape;
-    dropZone.appendChild(shapeElement);
+
+    shapesContainer.appendChild(shapeElement);
 
     gsap.set(shapeElement, { x: i, y: 0, scale: 1 });
     Draggable.create(shapeElement, {
@@ -152,7 +158,7 @@ function generateShapes() {
 
   const randomShapeIndex = Math.floor(Math.random() * randomShapes.length);
   const randomShape = randomShapes[randomShapeIndex];
-  evaluationArea.style.display = "block";
+  evaluationArea.style.display = "flex";
   evaluationArea.setAttribute("class", `evaluation-area ${randomShape}`);
 
   return randomShapes;
