@@ -129,7 +129,6 @@ function generateShapes() {
     "hexagon",
     "octagon",
     "star",
-    "heart",
     "diamond",
   ];
 
@@ -140,7 +139,7 @@ function generateShapes() {
     const shape = availableShapes[randomIndex];
     randomShapes.push(shape);
     availableShapes.splice(randomIndex, 1);
-
+    
     const shapeElement = document.createElement("div");
     shapeElement.classList.add("draggable", "shape", shape);
     shapeElement.style.backgroundColor = getRandomColor();
