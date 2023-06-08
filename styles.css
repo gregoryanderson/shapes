@@ -91,8 +91,6 @@
   
 
   #drop-zone {
-    width: 1000px;
-    height: 1000px;
     position: relative;
   }
   
@@ -102,7 +100,7 @@
     justify-content: center;
     background-color: #999;
     transition: opacity 0.5s;
-    margin: 100px auto;
+    margin: auto;
   }
 
   #restart-button {
@@ -111,7 +109,6 @@
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
   }
@@ -124,6 +121,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 100px;
   }
 
   .centered-button {
